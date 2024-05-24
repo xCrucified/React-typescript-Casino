@@ -4,9 +4,9 @@ import ReactSimplyCarousel from 'react-simply-carousel';
 import { Button } from "antd";
 
 const Main: React.FC = () => {
-    const [activeSlideIndex, setActiveSlideIndex] = React.useState(2);
+    const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
     const rollTheReel = () => {
-        setActiveSlideIndex((x) => (x + 6) % (Math.random() * 10)); // Assuming you have 10 slides, change 10 to the total number of slides you have
+        return setActiveSlideIndex((x) => (x + 6) % (Math.random() * 10)); // Assuming you have 10 slides, change 10 to the total number of slides you have
     };
     return (
         <div style={{
