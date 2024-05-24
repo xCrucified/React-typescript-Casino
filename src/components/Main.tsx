@@ -6,7 +6,7 @@ import { Button } from "antd";
 const Main: React.FC = () => {
     const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
     const rollTheReel = () => {
-        return setActiveSlideIndex((x) => (x + 6) % (Math.random() * 10)); // Assuming you have 10 slides, change 10 to the total number of slides you have
+        return setActiveSlideIndex((x) => (x + 6) % (Math.random() * 10));
     };
     return (
         <div style={{
@@ -14,7 +14,7 @@ const Main: React.FC = () => {
             flexDirection: 'column',
         }}>
             <ReactSimplyCarousel
-                activeSlideIndex={activeSlideIndex} //how many items i've roll 'random'
+                activeSlideIndex={activeSlideIndex} 
                 onRequestChange={setActiveSlideIndex}
                 itemsToShow={1}
                 itemsToScroll={1}
