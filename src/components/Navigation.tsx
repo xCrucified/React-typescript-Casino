@@ -21,12 +21,12 @@ const menuItems: MenuItem[] = [
     },
     {
         key: "/orders",
-        label: <Link to="/">Orders</Link>,
+        label: <Link to="/">Soon</Link>,
         icon: <UnorderedListOutlined/>
     },
     {
         key: "/about",
-        label: <Link to="/about">About</Link>,
+        label: <Link to="/about">Soon</Link>,
         icon: <InfoCircleOutlined/>
     }
 ]
