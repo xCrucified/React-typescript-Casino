@@ -20,14 +20,12 @@ const menuItems: MenuItem[] = [
         icon: <ProductOutlined/>
     },
     {
-        key: "/orders",
-        label: <Link to="/">Soon</Link>,
-        icon: <UnorderedListOutlined/>
+        key: "/login",
+        label: <Link to="/login">Login</Link>,
     },
     {
-        key: "/about",
-        label: <Link to="/about">Soon</Link>,
-        icon: <InfoCircleOutlined/>
+        key: "/register",
+        label: <Link to="/register">Register</Link>,
     }
 ]
 //Header
