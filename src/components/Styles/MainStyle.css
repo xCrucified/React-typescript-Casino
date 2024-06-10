@@ -1,6 +1,56 @@
-.roll-btn{
-    border-radius: 110%;
-    height: 190px;
-    border: 1px snow solid;
-    background: rgba(194, 194, 194, 0.37);
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slide:hover {
+    transform: scale(1.05);
+}
+
+.roll-btn {
+    align-self: center;
+    width: 200px;
+    height: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.roll-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.roll-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.active-slide-index, .balance {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
 }

@@ -1,22 +1,28 @@
-import React from "react"
-import './Styles/MainStyle.css'
+import React from "react";
+import './Styles/MainStyle.css';
 import ReactSimplyCarousel from 'react-simply-carousel';
 import { Button } from "antd";
+import { ISlot } from "../data/interfaces/ISlot";
+import { slides } from "../data/Slides";
 
 const Main: React.FC = () => {
     const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
+    const [balance, setBalance] = React.useState(100);
+
     const rollTheReel = () => {
         const random = Math.floor(Math.random() * 24);
-        setActiveSlideIndex((x) => (x + random) % 18);
+        setActiveSlideIndex((x) => (x + random) % slides.length);
+
+        if(activeSlideIndex >= 5) 
+            setBalance(balance + 10);
+        else 
+            setBalance(balance - 10);
     };
+
     return (
-        <div style={{
-            display: 'flex',
-            gap: 20,
-            flexDirection: 'column',
-        }}>
+        <div className="carousel-container">
             <ReactSimplyCarousel
-                activeSlideIndex={activeSlideIndex} 
+                activeSlideIndex={activeSlideIndex}
                 onRequestChange={setActiveSlideIndex}
                 itemsToShow={5}
                 forwardBtnProps={{
@@ -38,76 +44,31 @@ const Main: React.FC = () => {
                 speed={200}
                 easing="linear"
             >
-                <div style={{ width: 300, height: 300, background: '#ff80ed' }}>
-                    slide 0
+                {slides.map((slide: ISlot) => (
+                    <div
+                    key={slide.id}
+                    className="carousel-slide"
+                    style={{
+                        background: slide.backgroundColor,
+                    }}
+                >
+                    <img src={slide.src} alt={slide.label} style={{ width: '100%', height: '100%', borderRadius: '10px' }} />
                 </div>
-                <div style={{ width: 300, height: 300, background: '#065535' }}>
-                    slide 1
-                </div>
-                <div style={{ width: 300, height: 300, background: '#1d1e1e' }}>
-                    slide 2
-                </div>
-                <div style={{ width: 300, height: 300, background: '#133337' }}>
-                    slide 3
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffc0cb' }}>
-                    slide 4
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffffff' }}>
-                    slide 5
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffe4e1' }}>
-                    slide 6
-                </div>
-                <div style={{ width: 300, height: 300, background: '#008080' }}>
-                    slide 7
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ff0000' }}>
-                    slide 8
-                </div>
-                <div style={{ width: 300, height: 300, background: '#e6e6fa' }}>
-                    slide 9
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ff80ed' }}>
-                    slide 0
-                </div>
-                <div style={{ width: 300, height: 300, background: '#065535' }}>
-                    slide 1
-                </div>
-                <div style={{ width: 300, height: 300, background: '#1d1e1e' }}>
-                    slide 2
-                </div>
-                <div style={{ width: 300, height: 300, background: '#133337' }}>
-                    slide 3
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffc0cb' }}>
-                    slide 4
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffffff' }}>
-                    slide 5
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ffe4e1' }}>
-                    slide 6
-                </div>
-                <div style={{ width: 300, height: 300, background: '#008080' }}>
-                    slide 7
-                </div>
-                <div style={{ width: 300, height: 300, background: '#ff0000' }}>
-                    slide 8
-                </div>
-                <div style={{ width: 300, height: 300, background: '#e6e6fa' }}>
-                    slide 9
-                </div>
+                ))}
             </ReactSimplyCarousel>
             <Button className="roll-btn"
-            type="text"
-                style={{ 
-                    alignSelf: 'center', 
-                    width: 200,
-                }} 
-                onClick={rollTheReel}>
-                <p>Spin</p>
+                type="text"
+                onClick={rollTheReel}
+                disabled={balance < 10}
+            >
+                Spin
             </Button>
+            <div className="active-slide-index">
+                Active Slide Index: {activeSlideIndex}
+            </div>
+            <div className="balance">
+                Balance: ${balance}
+            </div>
         </div>
     );
 }

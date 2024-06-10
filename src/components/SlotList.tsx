@@ -1,37 +1,18 @@
-import React from "react"
-import './Styles/SlotListStyle.css'
-interface DataType {
-    key: string;
-    name: string;
-    image: string;
-}
-const data: DataType[] = [  
-    {
-        key: '1',
-        name: 'John Brown',
-        image: '',
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        image: '',
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        image: ''
-    },
-];
+import React from "react";
+import './Styles/SlotListStyle.css';
+import { slotList } from '../data/Slides';
+import { ISlotList } from '../data/interfaces/ISlot';
+
 const Slots: React.FC = () => {
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '5px'
-        }}>
-            {data.map((item) => (
-                <div key={item.key} className="slot-games-style">
-                    <p>{item.name}</p>
+        <div className="slot-container">
+            {slotList.map((item: ISlotList) => (
+                <div key={item.key} className="slot-game">
+                    <img src={item.image} alt={item.name} className="slot-image" />
+                    <div className="slot-info">
+                        <p className="slot-name">{item.name}</p>
+                    </div>
+                    <button className="slot-button">Play</button>
                 </div>
             ))}
         </div>
